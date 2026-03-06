@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="../src/output.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="flex flex-col justify-center items-center">
+        <div>
+            <h1 class="text-3xl font-bold mt-8 ml-3 mb-3 text-center">Student Form</h1>
+
+            <div class="border p-2 inline-block">
+                <form action="">
+                    <table class="border">
+                        <tr>
+                            <th class="border p-2">Name </th>
+                            <td class="border p-2"><input type="text" placeholder="Enter your Name" id="one"
+                                    class=" outline-none"></td>
+                        </tr>
+
+                        <tr>
+                            <th class="border p-2">Age</th>
+                            <td class="border p-2"><input type="text" placeholder="Enter your Age" id="two"
+                                    class="outline-none">
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="border p-2">Gender</th>
+                            <td id="three" class="border p-2 ">
+                                <label class="mr-2">
+                                    <input type="radio" name="Gender" value="Male" class="cursor-pointer"> Male
+                                </label>
+
+                                <label for="">
+                                    <input type="radio" name="Gender" value="Female" class="cursor-pointer"> Female
+                                </label>
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <th class="border p-2">Course</th>
+                            <td class="border p-2">
+                                <select name="Course" class="w-48" id="four">
+                                    <option disabled selected>Select Course</option>
+                                    <option value="JavaScript">Javascript</option>
+                                    <option value="Python Programming">Python Programming</option>
+                                    <option value="Java">Java</option>
+                                    <option value="C++">C++</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th class="border p-2">E-Mail</th>
+                            <td class="border p-2">
+                                <input type="text" placeholder="Enter your Mail Id" class="outline-none" id="five">
+                            </td>
+                        </tr>
+
+                        <tr class="border border-black text-center p-5">
+                            <td class="border  p-2 " colspan="2">
+                                <button type="button" id="six"
+                                    class="w-80 hover:bg-amber-600 hover:text-white hover:border border-black px-4 p">Save</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+
+        <div class="border mt-5 p-2 ">
+            <form action="">
+                <table>
+                    <tr>
+                        <th class="border p-2">Name</th>
+                        <th class="border p-2">Age</th>
+                        <th class="border p-2">Gender</th>
+                        <th class="border p-2">Course</th>
+                        <th class="border p-2 w-32">EMail</th>
+                        <th class="border p-2">Action</th>
+                    </tr>
+
+                    <tbody id="seven">
+
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+
+    <script>
+        var a = document.getElementById("one")
+        var b = document.getElementById("two")
+        var c = document.getElementById("three")
+        var d = document.getElementById("four")
+        var e = document.getElementById("five")
+        var f = document.getElementById("six")
+        var g = document.getElementById("seven")
+
+        f.addEventListener("click", function () {
+
+            var row = document.createElement("tr")
+
+            var a1 = document.createElement("td")
+            a1.textContent = a.value
+            a1.className = "border p-2"
+
+            var b1 = document.createElement("td")
+            b1.textContent = b.value
+            b1.className = "border p-2"
+
+            var gender = document.querySelector('input[name="Gender"]:checked')
+
+            var c1 = document.createElement("td")
+            c1.textContent = gender ? gender.value : ""
+            c1.className = "border p-2"
+
+            var d1 = document.createElement("td")
+            d1.textContent = d.value
+            d1.className = "border p-2"
+
+            var e1 = document.createElement("td")
+            e1.textContent = e.value
+            e1.className = "border p-2"
+
+            var action = document.createElement("td")
+            action.className = "border p-2"
+
+            var del = document.createElement("button")
+            del.textContent = "Delete"
+            del.className = "bg-red-500 text-white px-2 py-1"
+
+            del.onclick = function () {
+                row.remove()
+            }
+
+            action.append(del)
+
+            row.append(a1)
+            row.append(b1)
+            row.append(c1)
+            row.append(d1)
+            row.append(e1)
+            row.append(action)
+
+            g.append(row)
+
+
+            a.value = ""
+            b.value = ""
+            e.value = ""
+            d.selectedIndex = 0
+
+            var radios = document.querySelectorAll('input[name="Gender"]')
+            radios.forEach(r => r.checked = false)
+        })
+
+    </script>
+
+</body>
+
+</html>
+
+
+
+
